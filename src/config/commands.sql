@@ -12,6 +12,9 @@ CREATE TABLE users (
     deleted_at TIMESTAMP NULL
 );
 
+-- SELECT FROM users
+SELECT count(id) FROM users WHERE email = 'test@example.com' and status = true;
+
 -- SELECT * FROM users;
 
 -- COMANDOS DE PSQL
