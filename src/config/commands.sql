@@ -1,3 +1,8 @@
+CREATE DATABASE petstore;
+
+-- Connect to the database
+\c petstore;
+
 CREATE TABLE users (
     id SERIAL PRIMARY KEY,
     firstname VARCHAR(50) NOT NULL,
@@ -13,7 +18,9 @@ CREATE TABLE users (
 );
 
 -- SELECT FROM users
-SELECT count(id) FROM users WHERE email = 'test@example.com' and status = true;
+SELECT count(id) FROM users WHERE email =  'test@example.com' and status = true;
+
+
 
 -- SELECT * FROM users;
 
