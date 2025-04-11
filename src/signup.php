@@ -3,10 +3,13 @@
 include 'config/database.php';
 
 // Get form data from POST request
-$firstname = $_POST['firstname'] ?? '';
-$lastname = $_POST['lastname'] ?? '';
-$email = $_POST['email'] ?? '';
-$password = $_POST['password'] ?? '';
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// Hash password
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Check if email already exists
 $sql = "SELECT count(id) FROM users WHERE email = '$email' and status = true";
@@ -19,10 +22,12 @@ if($result) {
     } else {
         // Insert new user
         $sql = "INSERT INTO users (firstname, lastname, email, password) 
-        VALUES ('$firstname', '$lastname', '$email', '$password')";
+        VALUES ('$firstname', '$lastname', '$email', '$hashed_password')";
 
         if(pg_query($conn, $sql)) {
-            echo "User created successfully";
+
+            echo "<script>alert('User created successfully. Go to Sign In');</script>";
+            header("Refresh: 3; url=signin.html");
         } else {
             echo "Error creating user: " . pg_last_error($conn);
         }

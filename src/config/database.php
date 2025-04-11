@@ -27,6 +27,5 @@ $data_connection = "
 $conn = pg_connect($data_connection);
 if (!$conn) {
     echo "Connection failed: " . pg_last_error($conn);
-    exit();
 }
 ?>

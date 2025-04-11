@@ -18,8 +18,9 @@ CREATE TABLE users (
 );
 
 -- SELECT FROM users
-SELECT count(id) FROM users WHERE email =  'test@example.com' and status = true;
+SELECT count(id) FROM users WHERE email =  '$email' and status = true;
 
+SELECT id, firstname || ' ' || lastname as fullname, email, password FROM users;
 
 
 -- SELECT * FROM users;
