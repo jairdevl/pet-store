@@ -27,7 +27,7 @@ if($result) {
         if(pg_query($conn, $sql)) {
 
             echo "<script>alert('User created successfully. Go to Sign In');</script>";
-            header("Refresh: 3; url=signin.html");
+            header("Refresh: 0; url=http://localhost/pet-store/src/signin.html");
         } else {
             echo "Error creating user: " . pg_last_error($conn);
         }
