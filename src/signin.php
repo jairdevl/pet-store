@@ -1,33 +1,26 @@
 <?php
-// Process the from data
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'config/database.php';
 
-    // Get form data from POST request
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+include 'config/database.php';
 
-    // Check if email exists
-    $sql = "SELECT * FROM users WHERE email = '$email' and status = true";
-    $result = pg_query($conn, $sql);
+// Get form data from POST request
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    if($result) {
-        $user = pg_fetch_assoc($result);
-        if($user) {
-            // Verify password
-            if(password_verify($password, $user['password'])) {
-                session_start();
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['email'] = $user['email'];
-                header("Location: http://localhost/pet-store/src/home.php");
-            } else {
-                echo "<script>alert('Invalid password');</script>";
-            }
-        } else {
-            echo "<script>alert('Email not found');</script>";
-        }
+// Hash password
+//$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+$hashed_password = $password;
+
+$sql = "SELECT u.id FROM users u WHERE email = '$email' AND password = '$hashed_password' GROUP BY u.id";
+$result = pg_query($conn, $sql);
+if($result) {
+    $row = pg_fetch_assoc($result);
+    if($row['id'] > 0) {
+    header('Refresh: 0; url=http://localhost/pet-store/src/home.php');
     } else {
-        echo "Error validating email";
+        echo "Invalid email or password";
     }
+} else {
+    echo "Error validating email";
 }
+
 ?>
