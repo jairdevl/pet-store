@@ -117,8 +117,8 @@ Este proyecto está bajo la Licencia MIT. Consulta el archivo `LICENSE` para má
 ## 📧 Contacto
 
 Si tienes preguntas o sugerencias, no dudes en contactar al equipo de desarrollo:
-- Email: tu-email@ejemplo.com
-- GitHub: [tu-usuario](https://github.com/tu-usuario)
+- Email: jair@gmail.com
+- GitHub: [jairdevl]
 
 ---
 
