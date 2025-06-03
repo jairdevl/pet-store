@@ -79,23 +79,7 @@ cd pet-store
 2. Crea una nueva base de datos llamada `petstore`.
 3. Importa el esquema y datos iniciales desde `database/schema.sql`.
 
-### 4. Configurar la aplicación
-
-1. Copia el archivo `config/database.example.php` a `config/database.php`.
-2. Edita `config/database.php` con tus credenciales de PostgreSQL:
-
-```php
-<?php
-return [
-    'host' => 'localhost',
-    'port' => '5432',
-    'database' => 'petstore',
-    'username' => 'tu_usuario',
-    'password' => 'tu_contraseña',
-];
-```
-
-### 5. Configurar el servidor web
+### 4. Configurar el servidor web
 
 1. Mueve o copia el proyecto al directorio `htdocs` de XAMPP (generalmente en `C:\xampp\htdocs\` en Windows o `/Applications/XAMPP/htdocs/` en macOS).
 2. Accede a la aplicación a través de tu navegador: `http://localhost/pet-store`
